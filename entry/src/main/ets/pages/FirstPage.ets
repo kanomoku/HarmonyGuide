@@ -3,7 +3,7 @@ import { router } from '@kit.ArkUI'
 @Entry
 @Component
 struct FirstPage {
-  @State message: string = 'Hello World';
+  @State message: string = 'First Page';
 
   build() {
     Row() {
@@ -25,5 +25,25 @@ struct FirstPage {
 
     }
     .height('100%')
+  }
+
+  aboutToAppear(): void {
+    console.log("FirstPage----------aboutToAppear1")
+  }
+
+  aboutToDisappear(): void {
+    console.log("FirstPage----------aboutToDisappear1")
+  }
+
+  onPageShow(): void {
+    console.log("FirstPage----------onPageShow1")
+  }
+
+  onPageHide(): void {
+    console.log("FirstPage----------onPageHide1")
+  }
+
+  onBackPress(): boolean | void {
+    console.log("FirstPage----------onBackPress1")
   }
 }

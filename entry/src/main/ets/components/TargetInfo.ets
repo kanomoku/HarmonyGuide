@@ -13,88 +13,78 @@ export default struct TargetInfo {
       Row() {
         //图片
         Image($r('app.media.zhibo'))
-          .width(CommonConstants.PIC_SIZE)
-          .height(CommonConstants.PIC_SIZE)
-          .borderRadius(CommonConstants.RADIUS)
+          .width(96)
+          .height(96)
+          .borderRadius(12)
           .objectFit(ImageFit.Fill)
         //文字
         Column() {
           Text('直播带货销售目标')
-            .fontSize(CommonConstants.FONT_SIZE_MID)
+            .fontSize(18)
             .fontWeight(FontWeight.Bold)
           Text('直播人气大大提升')
-            .fontSize(CommonConstants.FONT_SIZE_SMALL)
-            .fontColor(CommonConstants.COLOR_FONT)
-            .opacity(CommonConstants.FONT_OPACITY)
-            .margin({ top: CommonConstants.MARGIN })
+            .fontSize(14)
+            .fontColor('#182431')
+            .opacity(0.6)
+            .margin({ top: 12 })
         }
         .alignItems(HorizontalAlign.Start)
-        .margin({ left: CommonConstants.MARGIN })
-
+        .margin({ left: 12 })
       }
-      .width(CommonConstants.FULL_WIDTH)
+      .width('100%')
+      .backgroundColor(Color.Orange)
 
       //2.2整体进度
       Row() {
         //进度文字
         Column() {
-          Text('整体进度')
-            .fontSize(CommonConstants.FONT_SIZE_MID)
-            .fontWeight(FontWeight.Bold)
+          Text('整体进度').fontSize(18).fontWeight(FontWeight.Bold)
           Row() {
-            Text('更新时间：')// .opacityTextStyle(30)
-              .opacityTextStyle()
-            Text('2024/06/28')// .opacityTextStyle(40)
-              .opacityTextStyle()
-          }.margin({ top: CommonConstants.MARGIN_UPDATE_TIME })
+            Text('更新时间：').opacityTextStyle()
+            Text('2024/06/28').opacityTextStyle()
+          }.margin({ top: 12 })
         }
         .alignItems(HorizontalAlign.Start)
-        .margin({ left: CommonConstants.MARGIN })
+        .margin({ top: 10, left: 10, right: 10, bottom: 10 })
 
         //空白组件 占用父组件剩余空间
         Blank()
         //圆环
         Stack() { //堆叠布局 组件层叠在一起的
           Row() {
-            Text(this.currentTarget.toString())
-              .fontSize(CommonConstants.FONT_SIZE_SMALL)
-              .fontColor(CommonConstants.COLOR_BLUE)
-            Text("/" + this.totalTarget)
-              .fontSize(CommonConstants.FONT_SIZE_SMALL)
+            Text(this.currentTarget.toString()).fontSize(14).fontColor('#007DFF')
+            Text("/" + this.totalTarget).fontSize(14)
           }
 
           Progress({
             value: this.currentTarget,
             total: this.totalTarget,
             type: ProgressType.Ring
-          })
-            .width(CommonConstants.PROGRESS_SIZE)
-            .height(CommonConstants.PROGRESS_SIZE)
+          }).width(48).height(48)
         }
         .onClick(() => {
           //修改页面数据
           if (this.currentTarget < this.totalTarget) {
             this.currentTarget++
           }
-
         })
-
       }
-      .width(CommonConstants.FULL_WIDTH)
-      .margin(CommonConstants.MARGIN)
+      .width('100%')
+      .margin(20)
+      .backgroundColor(Color.Pink)
     }
-    .width(CommonConstants.WIDTH_TARGETINFO_COLUMN)
-    .height(CommonConstants.height_TARGETINFO_COLUMN)
-    .backgroundColor(Color.White)
-    .borderRadius(CommonConstants.RADIUS)
-    .padding(CommonConstants.PADDING)
-    .margin({ top: CommonConstants.MARGIN })
+    .width('100%')
+    .height(200)
+    .backgroundColor(Color.Yellow)
+    .borderRadius(12)
+    .padding(16)
+    .margin({ top: 12 })
   }
 }
 
 @Extend(Text)
 function opacityTextStyle() {
-  .fontSize(CommonConstants.FONT_SIZE_SMALL)
-  .fontColor(CommonConstants.COLOR_FONT)
-  .opacity(CommonConstants.FONT_OPACITY)
+  .fontSize(14)
+  .fontColor('#182431')
+  .opacity(0.6)
 }

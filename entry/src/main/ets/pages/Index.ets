@@ -1,15 +1,6 @@
-// import CommonConstants from '../common/constant/CommonConstants';
 import CommonConstants from '../common/constant/CommonConstants';
 import TargetInfo from '../components/TargetInfo';
 
-//需求1：练习State装饰器：点击Statck 当前进度+1
-//雪球2：练习Prop装饰器：父（State）传递子（Prop）传递数据
-//    2.1抽取TargetInfo子组件
-//    2.2 父组件向TargetInfo传递数据
-//    2.3 父组件添加子目标，修改数据 观察子组件数据变化
-//        Prop(单向同步)
-//        父组件修改数据 会同步到子组件
-//        子组件修改数据 父组件数据不同步
 @Entry
 @Component
 struct Index {
@@ -26,9 +17,9 @@ struct Index {
     Column() {
       //1.工作目标标题
       Text('工作目标' + this.currentTarget + "/" + this.totalTarget)
-        .fontSize(CommonConstants.FONT_SIZE_LARGE)
+        .fontSize(24)
         .fontWeight(FontWeight.Bold)
-        .width(CommonConstants.FULL_WIDTH)
+        .width('100%')
 
       //2.目标信息
       TargetInfo({
@@ -38,31 +29,36 @@ struct Index {
       //添加子目标按钮
       Blank()
       Button('添加子目标')
-        .oprateButtonStyle()
-        .margin({
-          bottom: CommonConstants.MARGIN
-        })
+        .operateButtonStyle()
+        .margin({ bottom: 12 })
         .onClick(() => {
           //修改父组件的数据
           this.totalTarget++
         })
     }
-    .height(CommonConstants.FULL_HEIGHT)
-    .width(CommonConstants.FULL_WIDTH)
-    // .backgroundColor(CommonConstants.COLOR_PAGE_BGC)
-    // .bgColor()//全局调用
-    .bgColorInner()
-    .padding(CommonConstants.PADDING) //内边距
+    .height('100%')
+    .width('100%')
+    // .backgroundColor(CommonConstants.COLOR_PAGE_BGC) //  正常调用
+    // .bgColor() //全局调用
+    .bgColorInner() // 组件内调用
+    .padding(16) //内边距
   }
 }
 
-//抽取的是某一个组件的样式
-//@Extend 扩展组件的样式
-// @Extend(Text) function opacityTextStyle(size:number){
-//   .fontSize(size)
-//   .fontColor(CommonConstants.COLOR_FONT)
-//   .opacity(CommonConstants.FONT_OPACITY)
-// }
+@Styles
+function bgColor() {
+  .backgroundColor(CommonConstants.COLOR_PAGE_BGC)
+}
+
+@Extend(Button)
+function operateButtonStyle() {
+  .width('156vp')
+  .height(CommonConstants.HEIGHT_TARGET)
+  .fontSize(CommonConstants.FONT_SIZE_MID)
+  .fontColor(CommonConstants.COLOR_BLUE)
+  .backgroundColor(CommonConstants.COLOR_BTN_BGC)
+}
+
 @Extend(Text)
 function opacityTextStyle() {
   .fontSize(CommonConstants.FONT_SIZE_SMALL)
@@ -70,17 +66,9 @@ function opacityTextStyle() {
   .opacity(CommonConstants.FONT_OPACITY)
 }
 
-//全局写法
-@Styles
-function bgColor() {
-  .backgroundColor(CommonConstants.COLOR_PAGE_BGC)
-}
-
-@Extend(Button)
-function oprateButtonStyle() {
-  .width('156vp')
-  .height(CommonConstants.HEIGHT_TARGET) // 高有没有无所谓
-  .fontSize(CommonConstants.FONT_SIZE_MID)
-  .fontColor(CommonConstants.COLOR_BLUE)
-  .backgroundColor(CommonConstants.COLOR_BTN_BGC)
+@Extend(Text)
+function opacityTextStyle2(size: number) {
+  .fontSize(size)
+  .fontColor(CommonConstants.COLOR_FONT)
+  .opacity(CommonConstants.FONT_OPACITY)
 }

@@ -64,4 +64,7 @@ export default class CommonConstants {
    * Width of the content area.
    */
   static readonly WIDTH_TARGETLIST_COLUMN: string = '93.3%';
+
+
+
 }

@@ -2,6 +2,8 @@
   "src": [
     "pages/Index",
     "pages/FirstPage",
-    "pages/SecondPage"
+    "pages/SecondPage",
+    "pages/PracExample",
+    "pages/Index_http"
   ]
 }

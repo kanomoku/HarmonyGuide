@@ -5,6 +5,7 @@
     "pages/SecondPage",
     "pages/PracExample",
     "pages/Index_http",
-    "pages/Index_axios"
+    "pages/Index_axios",
+    "pages/Index_preferences"
   ]
 }

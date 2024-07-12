@@ -8,6 +8,7 @@
     "pages/Index_axios",
     "pages/Index_preferences",
     "pages/Index_preferences2",
-    "pages/Index_DBPage"
+    "pages/Index_DBPage",
+    "pages/Index_file_basic"
   ]
 }
